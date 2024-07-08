@@ -21,6 +21,7 @@ function Authenticate({ token }) {
       console.log(result)
       setSuccess(result.message)
       setAuthData(result.data.username)
+      setError('No Error')
     } catch (error) {
       setError(error.message)
     }
@@ -30,7 +31,7 @@ function Authenticate({ token }) {
     <>
       <h2>Authenticate</h2>
       { success && <p>{success}</p> }
-      { error ? <p>{error}</p> : <p>No Error</p> }
+      { error && <p>Error Message: {error}</p> }
       <button onClick={handleOnClick}>Authenticate Token</button>
       { authData && <p>Current Username: {authData}</p> }
     </>

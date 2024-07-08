@@ -27,6 +27,7 @@ function SignUpForm({ setToken }) {
       console.log(result)
       setToken(result.token)
       setSuccess(result.message)
+      setError('No Error')
     } catch (error) {
       setError(error.message)
     }
@@ -37,7 +38,7 @@ function SignUpForm({ setToken }) {
     <>
       <h2>Sign Up</h2>
       { success && <p>{success}</p> }
-      { error ? <p>{error}</p> : <p>No Error</p> }
+      { error && <p>Error Message: {error}</p> }
       <form onSubmit={handleSubmit}>
         <label>Username:
           <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} required minLength={8}/>
